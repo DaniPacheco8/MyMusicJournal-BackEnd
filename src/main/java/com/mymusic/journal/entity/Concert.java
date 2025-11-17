@@ -32,13 +32,10 @@ public class Concert {
     private String genre;
 
     @Column
-    private Integer rating;
-
-    @Column(columnDefinition = "TEXT")
-    private String notes;
+    private Double latitude;
 
     @Column
-    private String backgroundImage;
+    private Double longitude;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;

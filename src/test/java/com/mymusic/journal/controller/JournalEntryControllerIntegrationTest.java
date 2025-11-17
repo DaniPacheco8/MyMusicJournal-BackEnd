@@ -77,8 +77,8 @@ public class JournalEntryControllerIntegrationTest {
                                 .city("London")
                                 .date(LocalDateTime.of(2024, 6, 15, 19, 0))
                                 .genre("Rock")
-                                .rating(5)
-                                .notes("Iconic concert")
+                                .latitude(51.5390)
+                                .longitude(-0.1789)
                                 .createdAt(LocalDateTime.now())
                                 .updatedAt(LocalDateTime.now())
                                 .build();
@@ -91,6 +91,7 @@ public class JournalEntryControllerIntegrationTest {
                 JournalEntryRequestDTO requestDTO = JournalEntryRequestDTO.builder()
                                 .concertId(testConcert.getId())
                                 .personalNotes("This was an absolutely amazing concert experience!")
+                                .rating(5)
                                 .build();
 
                 mockMvc.perform(post("/api/journal")
@@ -102,7 +103,8 @@ public class JournalEntryControllerIntegrationTest {
                                 .andExpect(jsonPath("$.concertId", is(testConcert.getId().intValue())))
                                 .andExpect(jsonPath("$.concertTitle", containsString("The Beatles")))
                                 .andExpect(jsonPath("$.personalNotes",
-                                                is("This was an absolutely amazing concert experience!")));
+                                                is("This was an absolutely amazing concert experience!")))
+                                .andExpect(jsonPath("$.rating", is(5)));
 
                 assert journalEntryRepository.count() == 1;
         }

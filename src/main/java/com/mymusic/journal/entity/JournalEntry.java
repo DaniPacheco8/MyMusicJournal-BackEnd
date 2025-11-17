@@ -27,6 +27,12 @@ public class JournalEntry {
     @Column(columnDefinition = "TEXT")
     private String personalNotes;
 
+    @Column
+    private Integer rating;
+
+    @Column(columnDefinition = "LONGTEXT")
+    private String backgroundImage;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 

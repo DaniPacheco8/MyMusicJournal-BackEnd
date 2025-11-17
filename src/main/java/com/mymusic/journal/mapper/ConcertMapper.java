@@ -11,7 +11,6 @@ public interface ConcertMapper {
     ConcertDTO toDTO(Concert concert);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "backgroundImage", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     Concert toEntity(ConcertDTO concertDTO);

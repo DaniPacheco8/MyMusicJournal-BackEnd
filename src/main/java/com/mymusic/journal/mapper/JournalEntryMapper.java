@@ -11,6 +11,8 @@ public interface JournalEntryMapper {
 
     @Mapping(target = "concertTitle", expression = "java(journalEntry.getConcert().getArtist() + \" at \" + journalEntry.getConcert().getVenue())")
     @Mapping(target = "concertId", source = "concert.id")
+    @Mapping(target = "rating", source = "rating")
+    @Mapping(target = "backgroundImage", source = "backgroundImage")
     JournalEntryResponseDTO toResponseDTO(JournalEntry journalEntry);
 
     @Mapping(target = "id", ignore = true)

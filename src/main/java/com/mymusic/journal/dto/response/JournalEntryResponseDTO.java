@@ -13,6 +13,8 @@ public class JournalEntryResponseDTO {
     private Long concertId;
     private String concertTitle;
     private String personalNotes;
+    private Integer rating;
+    private String backgroundImage;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

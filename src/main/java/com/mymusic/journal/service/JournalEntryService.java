@@ -41,6 +41,8 @@ public class JournalEntryService {
                 .user(user)
                 .concert(concert)
                 .personalNotes(dto.getPersonalNotes())
+                .rating(dto.getRating())
+                .backgroundImage(dto.getBackgroundImage())
                 .build();
 
         JournalEntry savedEntry = journalEntryRepository.save(journalEntry);
@@ -84,6 +86,8 @@ public class JournalEntryService {
 
         journalEntry.setConcert(concert);
         journalEntry.setPersonalNotes(dto.getPersonalNotes());
+        journalEntry.setRating(dto.getRating());
+        journalEntry.setBackgroundImage(dto.getBackgroundImage());
 
         JournalEntry updatedEntry = journalEntryRepository.save(journalEntry);
         log.info("Journal entry ID: {} updated", updatedEntry.getId());
@@ -199,6 +203,8 @@ public class JournalEntryService {
                 .concertId(concert.getId())
                 .concertTitle(concertTitle)
                 .personalNotes(journalEntry.getPersonalNotes())
+                .rating(journalEntry.getRating())
+                .backgroundImage(journalEntry.getBackgroundImage())
                 .createdAt(journalEntry.getCreatedAt())
                 .updatedAt(journalEntry.getUpdatedAt())
                 .build();

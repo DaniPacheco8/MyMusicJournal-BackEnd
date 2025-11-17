@@ -15,7 +15,7 @@ public class ConcertDTO {
     private String city;
     private LocalDateTime date;
     private String genre;
-    private Integer rating;
-    private String notes;
+    private Double latitude;
+    private Double longitude;
 
 }

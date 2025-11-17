@@ -62,8 +62,8 @@ public class JournalEntryServiceTest {
                 .city("London")
                 .date(LocalDateTime.of(2024, 6, 15, 19, 0))
                 .genre("Rock")
-                .rating(5)
-                .notes("Iconic concert")
+                .latitude(51.5390)
+                .longitude(-0.1789)
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
                 .build();
