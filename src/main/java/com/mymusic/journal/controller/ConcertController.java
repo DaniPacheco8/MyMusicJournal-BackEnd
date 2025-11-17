@@ -1,6 +1,8 @@
 package com.mymusic.journal.controller;
 
 import com.mymusic.journal.dto.response.ConcertDTO;
+import com.mymusic.journal.dto.response.ConcertMapDTO;
+import com.mymusic.journal.security.JwtTokenProvider;
 import com.mymusic.journal.service.ConcertService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +18,7 @@ import java.util.List;
 public class ConcertController {
 
     private final ConcertService concertService;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @GetMapping
     public ResponseEntity<List<ConcertDTO>> getAllConcerts(
@@ -53,5 +56,18 @@ public class ConcertController {
         log.info("Fetching concert ID: {}", id);
         ConcertDTO concert = concertService.getConcertById(id);
         return ResponseEntity.ok(concert);
+    }
+
+    @GetMapping("/map")
+    public ResponseEntity<List<ConcertMapDTO>> getMapData(@RequestHeader("Authorization") String token) {
+        log.info("Fetching map data");
+        Long userId = getUserIdFromToken(token);
+        List<ConcertMapDTO> mapData = concertService.getMapDataForUser(userId);
+        return ResponseEntity.ok(mapData);
+    }
+
+    private Long getUserIdFromToken(String token) {
+        String jwtToken = token.replace("Bearer ", "");
+        return jwtTokenProvider.getUserIdFromToken(jwtToken);
     }
 }

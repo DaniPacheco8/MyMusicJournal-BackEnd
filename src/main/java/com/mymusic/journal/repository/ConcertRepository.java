@@ -39,4 +39,7 @@ public interface ConcertRepository extends JpaRepository<Concert, Long> {
 
     @Query("SELECT DISTINCT c.genre FROM Concert c ORDER BY c.genre")
     List<String> findAllGenres();
+
+    @Query("SELECT c FROM Concert c WHERE c.id IN (SELECT DISTINCT je.concert.id FROM JournalEntry je WHERE je.user.id = :userId)")
+    List<Concert> findConcertsAttendedByUser(Long userId);
 }

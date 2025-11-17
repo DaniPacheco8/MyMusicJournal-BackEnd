@@ -1,6 +1,7 @@
 package com.mymusic.journal.service;
 
 import com.mymusic.journal.dto.response.ConcertDTO;
+import com.mymusic.journal.dto.response.ConcertMapDTO;
 import com.mymusic.journal.entity.Concert;
 import com.mymusic.journal.mapper.ConcertMapper;
 import com.mymusic.journal.repository.ConcertRepository;
@@ -89,6 +90,22 @@ public class ConcertService {
         return concertRepository.findByGenreIgnoreCaseAndCityIgnoreCaseAndYear(genre, city, year)
                 .stream()
                 .map(concertMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<ConcertMapDTO> getMapDataForUser(Long userId) {
+        log.info("Fetching concert map data for user: {}", userId);
+
+        List<Concert> concerts = concertRepository.findConcertsAttendedByUser(userId);
+
+        return concerts.stream()
+                .map(concert -> ConcertMapDTO.builder()
+                        .id(concert.getId())
+                        .artist(concert.getArtist())
+                        .city(concert.getCity())
+                        .latitude(concert.getLatitude())
+                        .longitude(concert.getLongitude())
+                        .build())
                 .collect(Collectors.toList());
     }
 }
