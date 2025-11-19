@@ -13,6 +13,9 @@ public interface JournalEntryMapper {
     @Mapping(target = "concertId", source = "concert.id")
     @Mapping(target = "rating", source = "rating")
     @Mapping(target = "backgroundImage", source = "backgroundImage")
+    @Mapping(target = "date", source = "concert.date")
+    @Mapping(target = "city", source = "concert.city")
+    @Mapping(target = "genre", source = "concert.genre")
     JournalEntryResponseDTO toResponseDTO(JournalEntry journalEntry);
 
     @Mapping(target = "id", ignore = true)

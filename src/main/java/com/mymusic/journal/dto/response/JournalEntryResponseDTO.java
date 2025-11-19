@@ -18,4 +18,9 @@ public class JournalEntryResponseDTO {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    // Concert details for filtering and display
+    private LocalDateTime date;
+    private String city;
+    private String genre;
+
 }

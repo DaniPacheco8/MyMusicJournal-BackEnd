@@ -20,7 +20,7 @@ public class JournalEntry {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "concert_id", nullable = false)
     private Concert concert;
 
@@ -30,7 +30,7 @@ public class JournalEntry {
     @Column
     private Integer rating;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "TEXT")
     private String backgroundImage;
 
     @Column(name = "created_at", nullable = false, updatable = false)

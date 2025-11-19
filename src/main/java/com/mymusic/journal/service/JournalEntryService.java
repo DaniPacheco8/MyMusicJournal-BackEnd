@@ -207,6 +207,9 @@ public class JournalEntryService {
                 .backgroundImage(journalEntry.getBackgroundImage())
                 .createdAt(journalEntry.getCreatedAt())
                 .updatedAt(journalEntry.getUpdatedAt())
+                .date(concert.getDate())
+                .city(concert.getCity())
+                .genre(concert.getGenre())
                 .build();
     }
 
