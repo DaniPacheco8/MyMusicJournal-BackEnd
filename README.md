@@ -4,6 +4,8 @@
 
 MyMusicJournal is a comprehensive web application for tracking and documenting your concert experiences. Users can create, edit, and delete journal entries for concerts they've attended, including artist information, dates, venues, cities, ratings, and personal notes. Built with React (frontend), Spring Boot (backend), and PostgreSQL (database), the application follows MVC architecture and implements a RESTful API.
 
+<img width="1210" height="735" alt="img" src="https://github.com/user-attachments/assets/e76a8062-173a-4ee9-8b77-8bcd1309f843" />
+
 ## 🧩 Technical Competencies
 
 This project develops the following technical competencies:
@@ -217,18 +219,9 @@ The application uses `spring-dotenv` to load these variables automatically.
 mvn spring-boot:run
 ```
 
-**Building JAR for Production:**
-
-```bash
-mvn clean package
-java -jar target/journal-0.0.1-SNAPSHOT.jar
-```
-
 #### 5. Verify Installation
 
 The API will be available at: `http://localhost:8080`
-
-Test a simple endpoint with curl:
 
 ```bash
 curl http://localhost:8080/api/concerts
@@ -319,20 +312,6 @@ mvn test -Dtest=JournalEntryControllerIntegrationTest
 mvn test jacoco:report
 ```
 
-### Test Coverage
-
-- **JournalEntryService:** Unit tests for business logic
-- **JournalEntryController:** Integration tests for API endpoints
-- **Currently:** ~70% code coverage for JournalEntry features
-
-### Future Testing Improvements
-
-- [ ] AuthService unit tests
-- [ ] ConcertService unit tests
-- [ ] Controller error handling tests
-- [ ] JWT security tests
-- [ ] Target 80%+ code coverage
-
 ## 🔄 Development Workflow
 
 1. Create a feature branch from `dev`:
@@ -353,45 +332,6 @@ mvn test jacoco:report
    ```bash
    git push origin feature/your-feature-name
    ```
-
-## 📝 Database Migrations
-
-The project uses Flyway for database version control. Currently:
-
-- Flyway is disabled in development (using Hibernate's `ddl-auto=update`)
-- For production, migrations should be enabled with `spring.flyway.enabled=true`
-
-**Future Improvement:** Create comprehensive migration files:
-
-- V0\_\_Initial_schema.sql (create all tables)
-- Additional migrations for schema changes
-
-## 🚨 Known Issues & Future Improvements
-
-### Security
-
-- [ ] Move database credentials to environment variables (In Progress)
-- [ ] Implement strong password validation policy
-- [ ] Add refresh token mechanism
-- [ ] Implement role-based access control (RBAC)
-
-### Features
-
-- [ ] Pagination support for large datasets
-- [ ] Sorting by various fields
-- [ ] Search functionality (full-text search)
-- [ ] Concert creation endpoint (admin feature)
-- [ ] User profile management endpoints
-- [ ] Statistics/dashboard endpoints
-- [ ] Image upload functionality
-
-### Code Quality
-
-- [ ] Increase test coverage to 80%+
-- [ ] Add Swagger/OpenAPI documentation
-- [ ] Add database indexes for performance
-- [ ] Implement comprehensive request/response logging
-- [ ] Refactor duplicate filtering logic
 
 ## 📧 Contact & Support
 
