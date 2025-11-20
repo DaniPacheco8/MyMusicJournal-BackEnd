@@ -51,19 +51,19 @@ public class ConcertController {
         return ResponseEntity.ok(concerts);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ConcertDTO> getConcertById(@PathVariable Long id) {
-        log.info("Fetching concert ID: {}", id);
-        ConcertDTO concert = concertService.getConcertById(id);
-        return ResponseEntity.ok(concert);
-    }
-
     @GetMapping("/map")
     public ResponseEntity<List<ConcertMapDTO>> getMapData(@RequestHeader("Authorization") String token) {
         log.info("Fetching map data");
         Long userId = getUserIdFromToken(token);
         List<ConcertMapDTO> mapData = concertService.getMapDataForUser(userId);
         return ResponseEntity.ok(mapData);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ConcertDTO> getConcertById(@PathVariable Long id) {
+        log.info("Fetching concert ID: {}", id);
+        ConcertDTO concert = concertService.getConcertById(id);
+        return ResponseEntity.ok(concert);
     }
 
     private Long getUserIdFromToken(String token) {
